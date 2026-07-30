@@ -54,7 +54,7 @@ export default function Product(props) {
             title="Delete product"
             aria-label={`Delete ${props.product.name}`}
           >
-            🗑️
+            <span role="img" aria-label="trash">🗑️</span>
           </button>
         )}
       </div>
@@ -74,7 +74,7 @@ export default function Product(props) {
               onClick={handleAddToCart}
               title="Add to cart"
             >
-              🛒 Add
+              <span role="img" aria-label="cart">🛒</span> Add
             </button>
             {user && <Detail product={props.product} />}
           </div>

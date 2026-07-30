@@ -14,7 +14,6 @@ import Context from "../config/context";
 import {
   Form,
   Modal,
-  Button,
   Image,
   Grid
 } from "semantic-ui-react";
@@ -42,7 +41,7 @@ export default function Detail(props) {
     >
       {/* SmartCart: Modal header */}
       <Modal.Header>
-        🛒 {props.product.name}
+        <span role="img" aria-label="cart">🛒</span> {props.product.name}
       </Modal.Header>
 
       <Modal.Content>
@@ -101,7 +100,7 @@ export default function Detail(props) {
             className="sc-btn sc-btn--primary sc-btn--full"
             onClick={() => addToCart(props.product)}
           >
-            🛒 Add to Cart
+            <span role="img" aria-label="cart">🛒</span> Add to Cart
           </button>
         </Form>
 

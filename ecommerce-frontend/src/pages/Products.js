@@ -54,7 +54,7 @@ export default function Products() {
       ))
     ) : (
       <div className="sc-empty-state" style={{ gridColumn: "1 / -1" }}>
-        <div className="sc-empty-state__icon">🔍</div>
+        <div className="sc-empty-state__icon"><span role="img" aria-label="search">🔍</span></div>
         <p className="sc-empty-state__text">
           {searchQuery ? `No products matching "${searchQuery}"` : "No products found."}
         </p>
@@ -81,7 +81,7 @@ export default function Products() {
         <div className="sc-page-header__inner" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "16px" }}>
           <div>
             <h1 className="sc-page-header__title" style={{ margin: 0 }}>
-              🏷️ Our Products
+              <span role="img" aria-label="tag">🏷️</span> Our Products
               <span className="sc-page-header__count">{sortedProducts.length} items</span>
             </h1>
             {searchQuery && (

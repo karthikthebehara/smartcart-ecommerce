@@ -42,7 +42,7 @@ export default function Orders() {
   return (
     <div className="sc-page-container" style={{ maxWidth: "900px", margin: "40px auto", padding: "0 20px" }}>
       <h1 style={{ color: "#f0f6fc", marginBottom: "8px", display: "flex", alignItems: "center", gap: "10px" }}>
-        📜 My Orders
+        <span role="img" aria-label="scroll">📜</span> My Orders
       </h1>
       <p style={{ color: "#8b949e", marginBottom: "28px" }}>Track and view details of your past purchases.</p>
 
@@ -56,7 +56,7 @@ export default function Orders() {
             textAlign: "center"
           }}
         >
-          <p style={{ fontSize: "3rem", margin: 0 }}>📦</p>
+          <p style={{ fontSize: "3rem", margin: 0 }}><span role="img" aria-label="package">📦</span></p>
           <h3 style={{ color: "#c9d1d9", marginTop: "12px" }}>No Orders Placed Yet</h3>
           <p style={{ color: "#8b949e" }}>Explore our catalog and place your first order!</p>
           <Link to="/products" className="sc-btn sc-btn--primary" style={{ marginTop: "16px", display: "inline-block" }}>

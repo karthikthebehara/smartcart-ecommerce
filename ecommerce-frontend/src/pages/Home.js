@@ -28,11 +28,11 @@ export default function Home() {
   // SmartCart: User greeting block inside hero
   const userBlock = user ? (
     <div className="sc-hero__user-welcome">
-      <p>👋 Welcome back, <span>{user.email || user.username}</span>! Ready to shop?</p>
+      <p><span role="img" aria-label="wave">👋</span> Welcome back, <span>{user.email || user.username}</span>! Ready to shop?</p>
     </div>
   ) : (
     <div className="sc-login-required" style={{ justifyContent: "center", marginBottom: 0 }}>
-      <span>🔒</span>
+      <span role="img" aria-label="lock">🔒</span>
       <span>Please <Link to="/login" style={{ color: "var(--sc-accent)", fontWeight: 700, textDecoration: "none" }}>login</Link> to start shopping</span>
     </div>
   );
@@ -45,7 +45,7 @@ export default function Home() {
 
           {/* SmartCart: Eyebrow badge */}
           <div className="sc-hero__badge">
-            ✨ Full Stack E-Commerce · Spring Boot + React
+            <span role="img" aria-label="sparkles">✨</span> Full Stack E-Commerce · Spring Boot + React
           </div>
 
           {/* SmartCart: Main headline */}
@@ -67,10 +67,10 @@ export default function Home() {
           {/* SmartCart: CTA buttons */}
           <div className="sc-hero__actions">
             <Link to="/products" className="sc-btn sc-btn--primary">
-              🛍️ Browse Products
+              <span role="img" aria-label="shopping">🛍️</span> Browse Products
             </Link>
             <Link to="/categories" className="sc-btn sc-btn--outline">
-              📦 View Categories
+              <span role="img" aria-label="package">📦</span> View Categories
             </Link>
           </div>
 
@@ -163,7 +163,7 @@ export default function Home() {
             <div className="sc-features-grid">
 
               <div className="sc-feature-card">
-                <span className="sc-feature-card__icon">⚡</span>
+                <span className="sc-feature-card__icon"><span role="img" aria-label="zap">⚡</span></span>
                 <h3 className="sc-feature-card__title">Fast & Responsive</h3>
                 <p className="sc-feature-card__desc">
                   React-powered frontend with optimized rendering and smooth navigation across all devices.
@@ -171,7 +171,7 @@ export default function Home() {
               </div>
 
               <div className="sc-feature-card">
-                <span className="sc-feature-card__icon">🔐</span>
+                <span className="sc-feature-card__icon"><span role="img" aria-label="key">🔐</span></span>
                 <h3 className="sc-feature-card__title">Secure Authentication</h3>
                 <p className="sc-feature-card__desc">
                   User login and registration system backed by Spring Boot REST API and MySQL database.
@@ -179,7 +179,7 @@ export default function Home() {
               </div>
 
               <div className="sc-feature-card">
-                <span className="sc-feature-card__icon">📦</span>
+                <span className="sc-feature-card__icon"><span role="img" aria-label="package">📦</span></span>
                 <h3 className="sc-feature-card__title">Category Management</h3>
                 <p className="sc-feature-card__desc">
                   Organize products by categories with admin controls to add and manage catalog entries.
@@ -187,7 +187,7 @@ export default function Home() {
               </div>
 
               <div className="sc-feature-card">
-                <span className="sc-feature-card__icon">🛒</span>
+                <span className="sc-feature-card__icon"><span role="img" aria-label="cart">🛒</span></span>
                 <h3 className="sc-feature-card__title">Product Catalog</h3>
                 <p className="sc-feature-card__desc">
                   Browse a paginated product list with images, descriptions, pricing, and detail modals.
@@ -195,7 +195,7 @@ export default function Home() {
               </div>
 
               <div className="sc-feature-card">
-                <span className="sc-feature-card__icon">🏗️</span>
+                <span className="sc-feature-card__icon"><span role="img" aria-label="building">🏗️</span></span>
                 <h3 className="sc-feature-card__title">Spring Boot Backend</h3>
                 <p className="sc-feature-card__desc">
                   Built with Spring Boot 3.3, Spring Data JPA, and MySQL — a production-grade REST API.
@@ -203,7 +203,7 @@ export default function Home() {
               </div>
 
               <div className="sc-feature-card">
-                <span className="sc-feature-card__icon">📱</span>
+                <span className="sc-feature-card__icon"><span role="img" aria-label="mobile">📱</span></span>
                 <h3 className="sc-feature-card__title">Mobile Friendly</h3>
                 <p className="sc-feature-card__desc">
                   Fully responsive layout using CSS Grid and Flexbox — works great on any screen size.
@@ -220,7 +220,7 @@ export default function Home() {
       <footer className="sc-footer">
         <div className="sc-footer__inner">
           <div className="sc-footer__brand">
-            🛒 SmartCart
+            <span role="img" aria-label="cart">🛒</span> SmartCart
           </div>
           <div className="sc-footer__divider"></div>
           <p className="sc-footer__tagline">

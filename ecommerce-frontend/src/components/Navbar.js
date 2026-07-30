@@ -30,7 +30,7 @@ export default function Navbar() {
     <div className="sc-navbar__auth" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
       <CartModal />
       <span className="sc-navbar__user-chip">
-        👤 {user.email || user.username}
+        <span role="img" aria-label="user">👤</span> {user.email || user.username}
       </span>
       <Link
         to="/"
@@ -59,7 +59,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link to="/" className="sc-navbar__logo" onClick={closeMobile}>
-          <span className="sc-navbar__logo-icon">🛒</span>
+          <span className="sc-navbar__logo-icon"><span role="img" aria-label="cart">🛒</span></span>
           <span className="sc-navbar__logo-text">
             <span className="sc-navbar__logo-main">SmartCart</span>
             <span className="sc-navbar__logo-sub">E-Commerce</span>
@@ -70,7 +70,7 @@ export default function Navbar() {
         <div style={{ position: "relative", flex: "0 1 260px" }}>
           <input
             type="text"
-            placeholder="🔍 Search products..."
+            placeholder="Search products..."
             value={searchQuery || ""}
             onChange={handleSearchChange}
             style={{
@@ -104,7 +104,7 @@ export default function Navbar() {
           )}
           {user && user.admin && (
             <Link to="/admin/orders" className={isActive("/admin/orders")} onClick={closeMobile} style={{ color: "#f59e0b" }}>
-              🛡️ Admin Orders
+              <span role="img" aria-label="shield">🛡️</span> Admin Orders
             </Link>
           )}
         </div>
@@ -128,29 +128,29 @@ export default function Navbar() {
       {/* SmartCart: Mobile slide-down menu */}
       <div className={`sc-navbar__mobile-menu${mobileOpen ? " open" : ""}`}>
         <Link to="/" className={isActive("/")} onClick={closeMobile}>
-          🏠 Home
+          <span role="img" aria-label="home">🏠</span> Home
         </Link>
         <Link to="/categories" className={isActive("/categories")} onClick={closeMobile}>
-          📦 Categories
+          <span role="img" aria-label="categories">📦</span> Categories
         </Link>
         <Link to="/products" className={isActive("/products")} onClick={closeMobile}>
-          🏷️ Products
+          <span role="img" aria-label="products">🏷️</span> Products
         </Link>
         {user && (
           <Link to="/orders" className={isActive("/orders")} onClick={closeMobile}>
-            📜 My Orders
+            <span role="img" aria-label="orders">📜</span> My Orders
           </Link>
         )}
         {user && user.admin && (
           <Link to="/admin/orders" className={isActive("/admin/orders")} onClick={closeMobile}>
-            🛡️ Admin Orders
+            <span role="img" aria-label="admin">🛡️</span> Admin Orders
           </Link>
         )}
         <div style={{ borderTop: "1px solid #30363d", marginTop: "8px", paddingTop: "8px" }}>
           {user ? (
             <>
               <span className="sc-navbar__user-chip" style={{ marginBottom: "10px", display: "inline-flex" }}>
-                👤 {user.email || user.username}
+                <span role="img" aria-label="user">👤</span> {user.email || user.username}
               </span>
               <Link to="/" className="sc-btn sc-btn--outline sc-btn--sm" onClick={() => { closeMobile(); logout(); }}
                 style={{ display: "block", textAlign: "center" }}>

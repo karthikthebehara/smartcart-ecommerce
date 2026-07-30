@@ -19,7 +19,7 @@ export default function CartModal() {
         onClick={() => setIsOpen(true)}
         style={{ position: "relative", display: "inline-flex", alignItems: "center", gap: "6px" }}
       >
-        🛒 Cart
+        <span role="img" aria-label="cart">🛒</span> Cart
         {totalItems > 0 && (
           <span
             style={{
@@ -80,7 +80,7 @@ export default function CartModal() {
               }}
             >
               <h2 style={{ margin: 0, color: "#58a6ff", display: "flex", alignItems: "center", gap: "8px" }}>
-                🛒 Shopping Cart ({totalItems})
+                <span role="img" aria-label="cart">🛒</span> Shopping Cart ({totalItems})
               </h2>
               <button
                 onClick={() => setIsOpen(false)}
@@ -100,7 +100,7 @@ export default function CartModal() {
             <div style={{ flex: 1, overflowY: "auto", paddingRight: "4px" }}>
               {cart.length === 0 ? (
                 <div style={{ textAlign: "center", marginTop: "60px", color: "#8b949e" }}>
-                  <p style={{ fontSize: "3rem", margin: 0 }}>🛍️</p>
+                  <p style={{ fontSize: "3rem", margin: 0 }}><span role="img" aria-label="bags">🛍️</span></p>
                   <p style={{ fontSize: "1.1rem" }}>Your cart is empty.</p>
                   <p style={{ fontSize: "0.9rem" }}>Add products to start shopping!</p>
                 </div>
@@ -213,7 +213,7 @@ export default function CartModal() {
                     className="sc-btn sc-btn--primary"
                     style={{ flex: 2, textAlign: "center" }}
                   >
-                    Checkout 💳
+                    Checkout <span role="img" aria-label="card">💳</span>
                   </Link>
                 </div>
               </div>

@@ -53,7 +53,7 @@ export default function Login() {
       <div className="sc-auth-card">
 
         {/* SmartCart: Brand logo */}
-        <div className="sc-auth-card__logo">🛒</div>
+        <div className="sc-auth-card__logo"><span role="img" aria-label="cart">🛒</span></div>
 
         {/* SmartCart: Title — replaces Spanish "¡Hello again!" */}
         <h1 className="sc-auth-card__title">Welcome Back</h1>

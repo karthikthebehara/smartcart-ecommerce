@@ -29,7 +29,7 @@ export default function AdminOrders() {
   if (!user || !user.admin) {
     return (
       <div className="sc-page-container" style={{ textAlign: "center", padding: "60px 20px" }}>
-        <h2>Access Denied 🔒</h2>
+        <h2>Access Denied <span role="img" aria-label="lock">🔒</span></h2>
         <p style={{ color: "#8b949e" }}>You must be logged in as an Admin to view this page.</p>
         <Link to="/login" className="sc-btn sc-btn--primary" style={{ marginTop: "16px", display: "inline-block" }}>
           Log In as Admin
@@ -47,7 +47,7 @@ export default function AdminOrders() {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "24px", flexWrap: "wrap", gap: "12px" }}>
         <div>
           <h1 style={{ color: "#f0f6fc", margin: 0, display: "flex", alignItems: "center", gap: "10px" }}>
-            🛡️ Admin Order Management
+            <span role="img" aria-label="shield">🛡️</span> Admin Order Management
           </h1>
           <p style={{ color: "#8b949e", margin: "4px 0 0 0" }}>Manage customer orders and update shipping statuses.</p>
         </div>
@@ -99,7 +99,7 @@ export default function AdminOrders() {
                     Order #{order.id}
                   </span>
                   <span style={{ color: "#c9d1d9", fontSize: "0.9rem", marginLeft: "12px" }}>
-                    Customer: 👤 <strong>{order.username}</strong>
+                    Customer: <span role="img" aria-label="user">👤</span> <strong>{order.username}</strong>
                   </span>
                   <span style={{ color: "#8b949e", fontSize: "0.85rem", marginLeft: "12px" }}>
                     Date: {order.orderDate}
@@ -122,11 +122,11 @@ export default function AdminOrders() {
                       cursor: "pointer"
                     }}
                   >
-                    <option value="PENDING">⏳ PENDING</option>
-                    <option value="PROCESSING">⚙️ PROCESSING</option>
-                    <option value="SHIPPED">🚚 SHIPPED</option>
-                    <option value="DELIVERED">🟢 DELIVERED</option>
-                    <option value="CANCELLED">❌ CANCELLED</option>
+                    <option value="PENDING">PENDING</option>
+                    <option value="PROCESSING">PROCESSING</option>
+                    <option value="SHIPPED">SHIPPED</option>
+                    <option value="DELIVERED">DELIVERED</option>
+                    <option value="CANCELLED">CANCELLED</option>
                   </select>
                 </div>
               </div>

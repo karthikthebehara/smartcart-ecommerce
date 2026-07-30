@@ -43,7 +43,7 @@ export default function Categories() {
     ) : (
       /* SmartCart: Styled empty state — replaces plain Card with "Nothing here!" */
       <div className="sc-empty-state" style={{ gridColumn: "1 / -1" }}>
-        <div className="sc-empty-state__icon">📦</div>
+        <div className="sc-empty-state__icon"><span role="img" aria-label="package">📦</span></div>
         <p className="sc-empty-state__text">No categories yet. Check back soon!</p>
       </div>
     );
@@ -69,7 +69,7 @@ export default function Categories() {
       <div className="sc-page-header">
         <div className="sc-page-header__inner">
           <h1 className="sc-page-header__title">
-            📦 Shop by Category
+            <span role="img" aria-label="package">📦</span> Shop by Category
             <span className="sc-page-header__count">{categories.length} categories</span>
           </h1>
           {/* SmartCart: Admin add button preserved */}

@@ -1,11 +1,10 @@
 import React, { useState, useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Context from "../config/context";
 
 export default function Checkout() {
   const context = useContext(Context);
   const { cart, user, createOrder } = context;
-  const history = useHistory();
 
   const [shipping, setShipping] = useState({
     fullName: "",
@@ -74,7 +73,7 @@ export default function Checkout() {
             textAlign: "center"
           }}
         >
-          <div style={{ fontSize: "4rem", marginBottom: "16px" }}>🎉</div>
+          <div style={{ fontSize: "4rem", marginBottom: "16px" }}><span role="img" aria-label="party">🎉</span></div>
           <h1 style={{ color: "#3fb950", margin: "0 0 8px 0" }}>Order Placed Successfully!</h1>
           <p style={{ color: "#8b949e", fontSize: "1.1rem" }}>
             Order ID: <strong style={{ color: "#58a6ff" }}>#{completedOrder.id}</strong>
@@ -110,10 +109,10 @@ export default function Checkout() {
 
           <div style={{ display: "flex", gap: "12px", justifyContent: "center" }}>
             <Link to="/orders" className="sc-btn sc-btn--primary">
-              View My Orders 📜
+              View My Orders <span role="img" aria-label="scroll">📜</span>
             </Link>
             <Link to="/products" className="sc-btn sc-btn--outline">
-              Continue Shopping 🛍️
+              Continue Shopping <span role="img" aria-label="bags">🛍️</span>
             </Link>
           </div>
         </div>
@@ -136,7 +135,7 @@ export default function Checkout() {
   return (
     <div className="sc-page-container" style={{ maxWidth: "1000px", margin: "40px auto", padding: "0 20px" }}>
       <h1 style={{ color: "#f0f6fc", marginBottom: "24px", display: "flex", alignItems: "center", gap: "10px" }}>
-        💳 Checkout
+        <span role="img" aria-label="card">💳</span> Checkout
       </h1>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: "32px" }}>

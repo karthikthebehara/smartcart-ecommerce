@@ -40,13 +40,13 @@ export default function Category(props) {
             title="Delete category"
             aria-label={`Delete ${props.category.name}`}
           >
-            🗑️
+            <span role="img" aria-label="trash">🗑️</span>
           </button>
         )}
       </div>
       {/* SmartCart: Category name */}
       <div className="sc-category-card__name">
-        📦 {props.category.name}
+        <span role="img" aria-label="package">📦</span> {props.category.name}
       </div>
     </div>
   );
