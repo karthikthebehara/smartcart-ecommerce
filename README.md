@@ -1,181 +1,225 @@
 # 🛒 SmartCart – Full Stack E-Commerce Shopping Website
 
-A professional, full-stack E-Commerce web application built as a college mini project using **Spring Boot** (backend) and **React** (frontend), connected to a **MySQL** database.
+A complete, enterprise-grade full-stack E-Commerce web application developed using **Spring Boot 3.3** (Java 21 backend) and **React.js** (frontend), integrated with a **MySQL** database.
 
 ---
 
-## 📸 Project Overview
+## 📌 Project Overview
 
-**SmartCart** is a complete E-Commerce platform featuring:
-- User authentication (Login & Registration)
-- Product catalog with image support
-- Category management
-- Admin panel for adding products and categories
-- Paginated product/category listings
-- Responsive, mobile-friendly dark UI
+**SmartCart** is an end-to-end E-Commerce shopping platform designed for modern online retail. It seamlessly connects a dynamic single-page application (SPA) client to a high-performance RESTful API backend.
 
----
-
-## 🛠️ Technology Stack
-
-| Layer     | Technology                        |
-|-----------|-----------------------------------|
-| Backend   | Java 21, Spring Boot 3.3, Maven   |
-| ORM       | Spring Data JPA (Hibernate)       |
-| Database  | MySQL                             |
-| Frontend  | React 16, JavaScript (ES6+)       |
-| UI Library| Semantic UI React                  |
-| HTTP      | Axios                             |
-| Routing   | React Router DOM v5               |
+### Key Capabilities:
+- **👤 User Authentication**: Registration, Login, and Session State Management.
+- **🏷️ Product Catalog**: Paginated grid view with dynamic category tags and detail modals.
+- **📦 Category Management**: Filter and browse products by categories.
+- **🔍 Real-Time Search & Price Sorting**: Navbar live search bar and price sorting (Low-to-High, High-to-Low, Name A-Z).
+- **🛒 Shopping Cart System**: Slide-over drawer cart with quantity management, item removal, live total calculations, and dynamic navbar badge counter.
+- **💳 Checkout & Order Processing**: Multi-step checkout collecting shipping address, payment selection (Card, COD, UPI), and order placement.
+- **📜 Customer Order History (`/orders`)**: Order timeline with status tags (`PENDING`, `PROCESSING`, `SHIPPED`, `DELIVERED`, `CANCELLED`).
+- **🛡️ Admin Order Dashboard (`/admin/orders`)**: Admin control panel for managing customer orders and updating status dropdowns in real time.
 
 ---
 
-## 🏗️ Architecture
+## 🛠️ Technologies Used
+
+### Frontend Presentation Layer
+- **Framework**: React.js (v16.12+)
+- **Routing**: React Router DOM (v5.1+)
+- **State Management**: React Context API + `useReducer` Hook
+- **HTTP Client**: Axios (v0.21+)
+- **UI & Design**: Custom Glassmorphism CSS3 Design System + Semantic UI React
+- **Deployment**: Vercel
+
+### Backend Service Layer
+- **Language**: Java 21 (LTS)
+- **Framework**: Spring Boot 3.3.0
+- **Data Access / ORM**: Spring Data JPA (Hibernate)
+- **Build Tool**: Apache Maven (Wrapper Included)
+- **Application Server**: Embedded Apache Tomcat 10.1
+- **Deployment**: Render / Railway / Docker Container
+
+### Database Layer
+- **Relational DBMS**: MySQL Server 8.0+
+- **Database Cloud Deployment**: Railway MySQL / Aiven MySQL
+
+---
+
+## 🏗️ System Architecture
 
 ```
-SmartCart
-├── src/                          ← Spring Boot Backend (Java)
-│   └── main/
-│       ├── java/com/devrobot/springbootecommerce/
-│       │   ├── model/            ← JPA Entities (Product, Category, User)
-│       │   ├── repository/       ← Spring Data Repositories
-│       │   └── resource/         ← REST Controllers
-│       └── resources/
-│           └── application.properties
+                    ┌────────────────────────┐
+                    │      User Browser      │
+                    └───────────┬────────────┘
+                                │
+                                ▼
+         ┌───────────────────────────────────────────────┐
+         │     React Single-Page Application (SPA)      │
+         │           (Hosted on Vercel Cloud)            │
+         └──────────────────────┬────────────────────────┘
+                                │
+                        REST API (Axios)
+                                │
+                                ▼
+         ┌───────────────────────────────────────────────┐
+         │           Spring Boot REST Backend            │
+         │           (Hosted on Render Cloud)            │
+         └──────────────────────┬────────────────────────┘
+                                │
+                        Spring Data JPA
+                                │
+                                ▼
+         ┌───────────────────────────────────────────────┐
+         │             MySQL Relational Database         │
+         │           (Hosted on Railway MySQL)           │
+         └───────────────────────────────────────────────┘
+```
+
+---
+
+## 📁 Integrated Project Folder Structure
+
+```
+SmartCart/
+├── .mvn/                                 ← Maven Wrapper dependencies
+│   └── wrapper/
+│       ├── MavenWrapperDownloader.java
+│       ├── maven-wrapper.jar
+│       └── maven-wrapper.properties
 │
-└── ecommerce-frontend/           ← React Frontend
-    └── src/
-        ├── components/           ← Reusable UI components
-        ├── config/               ← Axios, Context API, Reducer
-        ├── pages/                ← Route-level pages
-        └── smartcart.css         ← Global design system
+├── src/                                  ← Spring Boot Backend Source Code
+│   └── main/
+│        ├── java/com/devrobot/springbootecommerce/
+│        │    ├── config/                 ← CORS & Exception Handlers
+│        │    ├── controller/             ← REST API Controllers
+│        │    ├── model/                  ← JPA Entities
+│        │    ├── repository/             ← Spring Data Repositories
+│        │    ├── resource/               ← REST API Endpoints
+│        │    ├── service/                ← Business Logic Services
+│        │    └── SpringBootEcommerceApplication.java
+│        │
+│        └── resources/
+│             └── application.properties  ← Database & Spring Configuration
+│
+├── ecommerce-frontend/                   ← React.js Frontend Application
+│   ├── public/                           ← Static Web Assets & HTML5 Template
+│   ├── src/                              ← React Components & Context State
+│   │   ├── components/                   ← Reusable UI Components
+│   │   ├── config/                       ← Context API Connector, Reducer, Axios Client
+│   │   ├── pages/                        ← Route Page Views (Home, Products, Checkout, Orders)
+│   │   ├── App.js                        ← Router Application Entry
+│   │   └── index.js                      ← React Render Entry
+│   │
+│   ├── .env.example                      ← Production Environment Variables Template
+│   ├── .gitignore                        ← Frontend Git Exclusions
+│   ├── vercel.json                       ← Vercel Routing Configuration
+│   ├── package.json                      ← Frontend Dependencies
+│   └── README.md                         ← Frontend Documentation
+│
+├── Dockerfile                            ← Multi-stage Containerization Config
+├── .gitignore                            ← Root Git Exclusions
+├── mvnw                                  ← Maven Linux/macOS Wrapper
+├── mvnw.cmd                              ← Maven Windows Wrapper
+├── pom.xml                               ← Backend Dependencies & POM
+└── README.md                             ← Main Integrated Documentation
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🔑 Environment Variables Setup
 
-### Prerequisites
+### Backend Environment Variables (`Render` / `Railway`)
 
-- [Java 21](https://adoptium.net/)
-- [Node.js 14+](https://nodejs.org/)
-- [MySQL Server](https://dev.mysql.com/downloads/)
-- [Maven](https://maven.apache.org/) (or use the included `mvnw` wrapper)
+| Variable | Description | Default Local Value |
+| :--- | :--- | :--- |
+| `SPRING_DATASOURCE_URL` | MySQL Connection String | `jdbc:mysql://localhost:3306/ecommerce` |
+| `SPRING_DATASOURCE_USERNAME` | MySQL Username | `root` |
+| `SPRING_DATASOURCE_PASSWORD` | MySQL Password | `root` |
+| `SERVER_PORT` / `PORT` | Backend Server Port | `8080` |
+
+### Frontend Environment Variables (`Vercel`)
+
+| Variable | Description | Production Example |
+| :--- | :--- | :--- |
+| `REACT_APP_API_URL` | Spring Boot REST API Endpoint Base URL | `https://smartcart-backend.onrender.com/api/` |
 
 ---
 
-### 1. Configure the Database
+## 🗄️ Local Development & Running Instructions
 
-Edit `src/main/resources/application.properties` with your MySQL credentials:
+### 1. Database Setup (MySQL)
+1. Ensure **MySQL Server** is running locally on `localhost:3306`.
+2. Configure credentials in `src/main/resources/application.properties` or set environment variables.
 
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/ecommerce?createDatabaseIfNotExist=true...
-spring.datasource.username=root
-spring.datasource.password=YOUR_PASSWORD
-```
-
-### 2. Create the Database
-
+### 2. Start the Spring Boot Backend (Port 8080)
+Open a terminal in the root directory:
 ```bash
-mysql -u root -p
-```
+# Windows:
+.\mvnw.cmd spring-boot:run
 
-```sql
-CREATE DATABASE ecommerce;
-```
-
-### 3. Start the Spring Boot Backend
-
-```bash
+# Linux / macOS:
 ./mvnw spring-boot:run
 ```
+> 🟢 **Backend API URL**: `http://localhost:8080/api/`
 
-The API will be available at: `http://localhost:8080/api/`
-
-### 4. (Optional) Create an Admin User
-
-```sql
-USE ecommerce;
-INSERT INTO user (username, email, is_admin, password)
-VALUES ('admin', 'admin@smartcart.com', true, 'admin123');
-```
-
-### 5. Start the React Frontend
-
+### 3. Start the React Frontend (Port 3000)
+Open a second terminal window in the `ecommerce-frontend` directory:
 ```bash
 cd ecommerce-frontend
 npm install
 npm start
 ```
-
-The frontend will be available at: `http://localhost:3000`
-
----
-
-## 📡 API Endpoints
-
-| Method | Endpoint               | Description             |
-|--------|------------------------|-------------------------|
-| GET    | `/api/products/all`    | List all products       |
-| POST   | `/api/products/add`    | Add a new product       |
-| GET    | `/api/categories/all`  | List all categories     |
-| POST   | `/api/categories/add`  | Add a new category      |
-| GET    | `/api/users/{username}`| Get user by username    |
-| POST   | `/api/users/add`       | Register a new user     |
+> 🌐 **Frontend Application URL**: `http://localhost:3000`
 
 ---
 
-## 🎨 UI Features
+## 🌐 Production Deployment Guide
 
-- **Dark glassmorphism navbar** with SmartCart branding
-- **Hero banner** with animated gradient background
-- **Featured Products** section on the home page
-- **Why Choose Us** feature cards section
-- **Responsive CSS Grid** product/category layouts
-- **Modern auth pages** with glassmorphism cards
-- **Hover animations** on all product/category cards
-- **Professional footer** with project attribution
+### Step 1: Database Setup on Railway MySQL
+1. Log in to [Railway.app](https://railway.app/).
+2. Create a **New Project** ➔ Select **Provision MySQL**.
+3. Copy the MySQL Connection URL, Username, Password, and Database Name from the **Variables** tab.
 
----
+### Step 2: Backend Deployment on Render
+1. Log in to [Render.com](https://render.com/).
+2. Click **New +** ➔ Select **Web Service**.
+3. Connect your GitHub Repository: `https://github.com/karthikthebehara/smartcart-ecommerce`
+4. Set build settings:
+   - **Environment**: `Docker` or `Java`
+   - **Build Command**: `./mvnw clean package -DskipTests`
+   - **Start Command**: `java -jar target/spring-boot-ecommerce-0.0.1-SNAPSHOT.jar`
+5. In **Environment Variables**, add:
+   - `SPRING_DATASOURCE_URL`: `jdbc:mysql://<railway-host>:<port>/railway?useSSL=false`
+   - `SPRING_DATASOURCE_USERNAME`: `<railway-user>`
+   - `SPRING_DATASOURCE_PASSWORD`: `<railway-password>`
+6. Deploy service and copy your public backend domain (e.g. `https://smartcart-backend.onrender.com`).
 
-## 📁 Frontend Source Files
-
-| File | Purpose |
-|---|---|
-| `src/smartcart.css` | Global design system (CSS tokens, components) |
-| `src/App.js` | Root component with routing |
-| `src/pages/Home.js` | Landing page with hero & features |
-| `src/pages/Products.js` | Paginated product listing |
-| `src/pages/Categories.js` | Category listing |
-| `src/pages/Login.js` | User login |
-| `src/pages/Signin.js` | User registration |
-| `src/components/Navbar.js` | SmartCart navigation bar |
-| `src/components/Product.js` | Product card component |
-| `src/components/Category.js` | Category card component |
-| `src/components/Detail.js` | Product detail modal |
-| `src/components/AddProductForm.js` | Admin: add product modal |
-| `src/components/AddCategoryForm.js` | Admin: add category modal |
-| `src/config/connector.js` | Context API + all API calls |
-| `src/config/axios.js` | Axios base URL config |
+### Step 3: Frontend Deployment on Vercel
+1. Log in to [Vercel.com](https://vercel.com/).
+2. Click **Add New Project** ➔ Import `smartcart-ecommerce` repository.
+3. Set **Root Directory** to `ecommerce-frontend`.
+4. In **Environment Variables**, set:
+   - `REACT_APP_API_URL` = `https://smartcart-backend.onrender.com/api/`
+5. Click **Deploy**. Vercel will build and host your Single Page Application.
 
 ---
 
-## 📚 Libraries Used
+## 📡 REST API Endpoints Summary
 
-- [React](https://reactjs.org/) – Frontend framework
-- [Semantic UI React](https://react.semantic-ui.com/) – UI component library
-- [Spring Boot](https://spring.io/projects/spring-boot) – Backend framework
-- [Spring Data JPA](https://spring.io/projects/spring-data-jpa) – ORM layer
-- [Axios](https://axios-http.com/) – HTTP client
-- [React Router DOM](https://reactrouter.com/) – Client-side routing
-
----
-
-## 📄 License
-
-Apache 2.0 — see [LICENSE](LICENSE).
+| Operation | HTTP Method | Endpoint |
+| :--- | :--- | :--- |
+| **Get Catalog** | `GET` | `/api/products/all` |
+| **Get Categories** | `GET` | `/api/categories/all` |
+| **User Login** | `POST` | `/api/users/login` |
+| **User Register** | `POST` | `/api/users/add` |
+| **Create Order** | `POST` | `/api/orders/create` |
+| **User Orders** | `GET` | `/api/orders/user/{username}` |
+| **Admin All Orders** | `GET` | `/api/orders/all` |
+| **Update Order Status** | `PUT` | `/api/orders/{id}/status` |
 
 ---
 
-> **SmartCart** · Full Stack E-Commerce Shopping Website  
-> Developed using **Spring Boot + React** · College Mini Project · © 2026
+## 👤 Author & Repository Information
+
+- **Student Name**: Behara Karthik
+- **GitHub Repository**: [https://github.com/karthikthebehara/smartcart-ecommerce](https://github.com/karthikthebehara/smartcart-ecommerce)
+- **Year**: 2026

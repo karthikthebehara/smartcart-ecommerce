@@ -1,3 +1,11 @@
+/**
+ * SmartCart E-Commerce Platform — Main Application Component
+ * 
+ * @module App
+ * @description Main entry component managing client-side routing with React Router DOM v5 
+ * and wrapping the application tree in ContextConnector state provider.
+ * @author Behara Karthik
+ */
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
@@ -7,7 +15,7 @@ import ContextConnector from "./config/connector";
 // SmartCart: Components
 import Navbar from "./components/Navbar";
 
-// SmartCart: Pages
+// SmartCart: Page Views
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Categories from "./pages/Categories";
@@ -16,6 +24,7 @@ import Signin from "./pages/Signin";
 import Checkout from "./pages/Checkout";
 import Orders from "./pages/Orders";
 import AdminOrders from "./pages/AdminOrders";
+
 
 function App() {
   return (
